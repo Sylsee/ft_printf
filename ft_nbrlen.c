@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_aff.c                                           :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/30 13:50:47 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/30 13:52:07 by spoliart         ###   ########.fr       */
+/*   Created: 2021/01/29 16:00:21 by spoliart          #+#    #+#             */
+/*   Updated: 2021/01/29 16:01:39 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprintf.h"
+#include <libft.h>
 
-int ft_print_int(int n, int fd, int fl[8])
+int	ft_nbrlen(int n)
 {
+	int count;
 	long nb;
 
 	nb = n;
+	count = 0;
+	if (nb < 0)
+	{
+		count++;
+		nb *= -1;
+	}
+	while (nb > 9)
+	{
+		nb /= 10;
+		count++;
+	}
+	return (++count);
 }
