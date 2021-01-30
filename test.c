@@ -3,15 +3,10 @@
 
 int main()
 {
-/*	unsigned int a = 42;
-	unsigned int *b = &a;
-
-	printf("p: %-020p\n", b);
-	printf("X: %X\n", *b);*/
-	printf("-: %-10d\n", 21);
-	printf("0: %010d\n", 42);
-	printf("*: %10d\n", 84);
-	printf(".: %.10d\n", 168);
+	printf("-*.: %*.5d\n", -10, -21);
+	printf("0.: %010.5d\n", 21);
+	printf("-.: %-10.5d\n", 21);
+	printf("*.: %*.5d\n", 10, 21);
 	return (0);
 }
 
@@ -25,21 +20,17 @@ int main()
 **	
 **	
 **	
+*/
 
-int ft_putstr(char *s)
-{
-	int i;
 
-	i = -1;
-	while (s[++i])
-		write(1, &s[i], 1);
-	return (i);	
-}
 
-int ft_atoi(char *n)
-{
-	int i;
-	long ret;
-
-	
-}*/
+/*
+**  cspdiuxX%
+**	fl : 0 -> between % and fl
+**	fl : 1 -> digit before (width / padding)
+**	fl : 2 -> number -
+**	fl : 3 -> number 0
+**	fl : 4 -> number .
+**	fl : 5 -> number *
+**	fl : 6 -> digit after (precision)
+*/
