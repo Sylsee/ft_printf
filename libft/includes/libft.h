@@ -6,7 +6,7 @@
 /*   By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:34:43 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/25 16:59:00 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/01/30 15:01:13 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 char				*ft_strdup(const char *s);
 
 int					ft_atoi(const char *nptr);
+int					ft_nbrlen(int n);
 
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
