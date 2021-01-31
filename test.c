@@ -3,12 +3,22 @@
 
 int main()
 {
-	int i = 0;
-
-	if (i)
-		printf("wesh\n");
-	printf("%-*d", 10, 42);
+	printf("0: %0*d\n", -10, 42);
+	printf("0: %0*d\n", -10, 42);
+	printf("0: %.*d\n\n", -10, 42);
+	printf("-: %-*c\n", 10, 's');
+	printf("0: %0*c\n", -10, 's');
+	printf("*: %*c\n", 10, 's');
+	/*
+	printf("-: %-*s\n", 10, "wesh");
+	printf("0: %0*s\n", 10, "wesh");
+	printf("*: %*s\n", 10, "wesh");
+	printf(".: %.*s\n", 0, "wesh");
+	printf("-.: %-*.2s\n", 10, "wesh");
+	printf("0.: %0*.2s\n", 10, "wesh");
+	printf("*.: %*.2s\n", 10, "wesh");
 	return (0);
+	*/
 }
 
 

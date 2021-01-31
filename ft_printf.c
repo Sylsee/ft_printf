@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 11:08:49 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/31 13:45:02 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/01/31 14:21:02 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int		ft_print_choice(const char *format, va_list args, int fl[8])
 	if (format[fl[0]] == 'p')
 		return (ft_print_p((unsigned long)va_arg(args, void *), fl);
 	if (format[fl[0]] == 'd' || format[fl[0]] == 'i')
-		return (ft_print_d((int)va_arg(args, int), fl);
+		return (ft_print_d((long)va_arg(args, int), fl);
 	if (format[fl[0]] == 'u')
-		return (ft_print_u((unsigned int)va_arg(args, unsigned int), fl);
+		return (ft_print_d((long)va_arg(args, unsigned int), fl);
 	if (format[fl[0]] == 'x')
 		return (ft_print_x((unsigned int)va_arg(args, int), fl);
 	if (format[fl[0]] == 'X')
@@ -55,7 +55,7 @@ void	ft_flags(const char *format, int fl[8])
 
 void	ft_width(const char *format, va_list args, int fl[8])
 {
-	else if (format[fl[0]] && format[fl[0]] == '*' && ++fl[0])
+	if (format[fl[0]] && format[fl[0]] == '*' && ++fl[0])
 	{
 		if (!fl[2] && !fl[3])
 			++fl[5];
