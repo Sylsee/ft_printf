@@ -6,8 +6,9 @@ int main()
 	printf("0: %0*d\n", -10, 42);
 	printf("0: %0*d\n", -10, 42);
 	printf("0: %.*d\n\n", -10, 42);
+
 	printf("-: %-*c\n", 10, 's');
-	printf("0: %0*c\n", -10, 's');
+	printf("0: %0*c\n", 10, 's');
 	printf("*: %*c\n", 10, 's');
 	/*
 	printf("-: %-*s\n", 10, "wesh");

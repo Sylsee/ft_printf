@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 13:50:47 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/31 16:02:51 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/01/31 16:13:24 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	ft_print_c(char c, int fl[8])
 	ret = 1;
 	if (fl[5])
 		ret += ft_putxchar_fd(' ', 1, fl[1] - len);
-	if (fl[])
+	if (fl[3])
+		ret += ft_putxchar_fd('0', 1, fl[1] - len);
 	ft_putchar_fd(c, 1);
 	if (fl[2])
 	{
@@ -60,7 +61,7 @@ int	ft_print_c(char c, int fl[8])
 			fl[1] = -fl[1];
 		ft_putxchar_fd(' ', 1, fl[1] - len);
 	}
-	else if (fl[5] && fl[1] < 0)
+	else if ((fl[3] || fl[5]) && fl[1] < 0)
 	{
 		fl[1] = -fl[1];
 		ft_putxchar_fd(' ', 1, fl[1] - len);
@@ -94,26 +95,22 @@ int ft_print_s(char *s, int fl[8])
 	ret = len;
 	if (fl[5])
 		ret += ft_putxchar_fd(' ', 1, fl[1] - len);
+	if (fl[3])
+		ret += ft_putxchar_fd('0', 1, fl[1] - len);
+	ft_putstr_fd(s, 1);
+	if (fl[2])
+	{
+		if (fl[1] < 0)
+			fl[1] = -fl[1];
+		ft_putxchar_fd(' ', 1, fl[1] - len);
+	}
+	else if ((fl[3] || fl[5]) && fl[1] < 0)
+	{
+		fl[1] = -fl[1];
+		ft_putxchar_fd(' ', 1, fl[1] - len);
+	}
 	free(s);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
