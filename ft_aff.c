@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 13:50:47 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/30 17:20:46 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/01/31 14:10:07 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 int ft_print_d(int n, int fl[8])
 {
-	int i;
-	int len;
-	char *nb;
-
-	i = 0;
-	len = ft_nbrlen(n);
-	nb = ft_itoa(n);
-	if ((fl[2] || ((fl[3] || fl[5]) && fl[4])) && (fl[4] >= (fl[2] || fl[3] || fl[4])))
-		if (len < fl[1])
-			ft_putxchar_fd(' ', 1, fl[1] - fl[6] - len);
-}
-
-int	ft_putxchar_fd(unsigned char c, int fd, int x)
-{
 	int ret;
+	int len;
+	long nb;
 
-	ret = 0;
-	while (x--)
-		ret += write(fd, &c, 1);
-	return (ret);
+	nb = n;
+	len = ft_nbrlen(n);
+	ret = len;
+	if ((fl[4] && (fl[3] || fl[5])) || fl[5])
+		ret += ft_putxchar_fd(' ', 1, fl[1] - fl[6] - len);
+	if (n < 0)
+		nb = -nb + 0 * write(1, '-', 1);
+	if (fl[3] || fl[4])
+		ret += ft_putxchar_fd('0', 1, fl[6] - len);
+	ft_putnbr_fd((int)nb, 1);
+	if (fl[2])
+	{
+		if (fl[1] < 0)
+			fl[1] = -fl[1];
+		ret += ft_putxchar_fd(' ', 1, fl[1] - fl[6] - len);
+	}
+	if (fl[3] && fl[4] && fl[1] < 0)
+	{
+		fl[1] = -fl[1];
+		ret += ft_putxchar_fd(' ', 1, fl[1] - fl[6] - len);
+	}
 }

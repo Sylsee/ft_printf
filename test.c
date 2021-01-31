@@ -3,10 +3,11 @@
 
 int main()
 {
-	printf("-*.: %*.5d\n", -10, -21);
-	printf("0.: %010.5d\n", 21);
-	printf("-.: %-10.5d\n", 21);
-	printf("*.: %*.5d\n", 10, 21);
+	int i = 0;
+
+	if (i)
+		printf("wesh\n");
+	printf("%-*d", 10, 42);
 	return (0);
 }
 

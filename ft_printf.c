@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 11:08:49 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/30 17:20:52 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/01/31 13:45:02 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 **	fl : 2 -> number -
 **	fl : 3 -> number 0
 **	fl : 4 -> number .
-**	fl : 5 -> number * (other arg needed)
+**	fl : 5 -> number *
 **	fl : 6 -> digit after (precision)
 */
 
@@ -55,13 +55,16 @@ void	ft_flags(const char *format, int fl[8])
 
 void	ft_width(const char *format, va_list args, int fl[8])
 {
-	if (format[fl[0]] && format[fl[0]] == '*' && format[fl[0] - 1] == '%' && 
-			++fl[5] && ++fl[0])
-		fl[1] = va_arg(args, int);
 	else if (format[fl[0]] && format[fl[0]] == '*' && ++fl[0])
+	{
+		if (!fl[2] && !fl[3])
+			++fl[5];
 		fl[1] = va_arg(args, int);
+	}
 	else if (format[fl[0]] && ft_isdigit(format[fl[0]]))
 	{
+		if (!fl[2] && !fl[3])
+			++fl[5];
 		fl[1] = ft_atoi(&format[fl[0]]);
 		while (ft_isdigit(format[fl[0]]))
 			++fl[0];
