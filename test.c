@@ -1,25 +1,40 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "libprintf.h"
 
 int main()
 {
-	printf("0: %0*d\n", -10, 42);
-	printf("0: %0*d\n", -10, 42);
-	printf("0: %.*d\n\n", -10, 42);
+	int xstr = -10;
+	ft_printf("-: %-*X\n", 20, xstr);
+	ft_printf("0: %0*x\n", 20, xstr);
+	ft_printf("*: %*x\n", 20, xstr);
+	ft_printf(".: %.*x\n", 1, xstr);
+	ft_printf("-.: %-*.20x\n", 20, xstr);
+	ft_printf("0.: %0*.20x\n", 20, xstr);
+	ft_printf("*.: %*.20x\n", 20, xstr);
 
-	printf("-: %-*c\n", 10, 's');
-	printf("0: %0*c\n", 10, 's');
-	printf("*: %*c\n", 10, 's');
-	/*
-	printf("-: %-*s\n", 10, "wesh");
-	printf("0: %0*s\n", 10, "wesh");
-	printf("*: %*s\n", 10, "wesh");
-	printf(".: %.*s\n", 0, "wesh");
-	printf("-.: %-*.2s\n", 10, "wesh");
-	printf("0.: %0*.2s\n", 10, "wesh");
-	printf("*.: %*.2s\n", 10, "wesh");
+	long str = 0;
+	ft_printf("-: %-*p\n", 20, &str);
+	ft_printf("0: %0*p\n", 20, &str);
+	ft_printf("*: %*p\n", 20, &str);
+	ft_printf(".: %.*p\n", 1, &str);
+	ft_printf("-.: %-*.20p\n", 20, &str);
+	ft_printf("0.: %0*.20p\n", 20, &str);
+	ft_printf("*.: %*.20p\n", 20, &str);
+
+	ft_printf("0: %0*d\n", -10, 42);
+	ft_printf("0: %0*d\n", -10, 42);
+	ft_printf("0: %.*d\n\n", -10, 42);
+
+	ft_printf("-: %-*c\n", 10, 's');
+	ft_printf("0: %0*c\n", 10, 's');
+	ft_printf("*: %*c\n", 10, 's');
+	ft_printf("-: %-*s\n", 20, str);
+	ft_printf("0: %0*s\n", 20, str);
+	ft_printf("*: %*s\n", 20, str);
+	ft_printf(".: %.*s\n", 0, "wesh");
+	ft_printf("-.: %-*.2s\n", 20, str);
+	ft_printf("0.: %0*.2s\n", 20, str);
+	ft_printf("*.: %*.2s\n", 20, str);
 	return (0);
-	*/
 }
 
 

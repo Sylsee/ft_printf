@@ -6,12 +6,12 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 11:08:49 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/31 14:21:02 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:48:23 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 /*
 **  cspdiuxX%
@@ -24,7 +24,7 @@
 **	fl : 6 -> digit after (precision)
 */
 
-int		ft_print_choice(const char *format, va_list args, int fl[8])
+static int		ft_print_choice(const char *format, va_list args, int *fl)
 {
 	if (format[fl[0]] == 'c')
 		return (ft_print_c((char)va_arg(args, char), fl);
@@ -37,12 +37,12 @@ int		ft_print_choice(const char *format, va_list args, int fl[8])
 	if (format[fl[0]] == 'u')
 		return (ft_print_d((long)va_arg(args, unsigned int), fl);
 	if (format[fl[0]] == 'x')
-		return (ft_print_x((unsigned int)va_arg(args, int), fl);
+		return (ft_print_x((unsigned int)va_arg(args, int), fl, 0);
 	if (format[fl[0]] == 'X')
-		return (ft_print_X((unsigned int)va_arg(args, int), fl);
+		return (ft_print_x((unsigned int)va_arg(args, int), fl, 1);
 }
 
-void	ft_flags(const char *format, int fl[8])
+static void	ft_flags(const char *format, int *fl)
 {
 	while (format[++fl[0]] && (format[fl[0]] == '-' || format[fl[0]] == '0'))
 	{
@@ -53,7 +53,7 @@ void	ft_flags(const char *format, int fl[8])
 	}
 }
 
-void	ft_width(const char *format, va_list args, int fl[8])
+static void	ft_width(const char *format, va_list args, int *fl)
 {
 	if (format[fl[0]] && format[fl[0]] == '*' && ++fl[0])
 	{
@@ -71,7 +71,7 @@ void	ft_width(const char *format, va_list args, int fl[8])
 	}
 }
 
-void	ft_prec(const char *format, va_list args, int fl[8])
+static void	ft_prec(const char *format, va_list args, int *fl)
 {
 	if (format[fl[0]] && format[fl[0]] == '.' && ++fl[4] && ++fl[0])
 	{
@@ -86,10 +86,13 @@ void	ft_prec(const char *format, va_list args, int fl[8])
 	}
 }
 
-int		ft_init_printf(const char *format, va_list args)
+static int		ft_init_printf(const char *format, va_list args)
 {
-	int fl[8];
+	int *fl;
 
+	fl = (int *)malloc(sizeof(fl) * 8);
+	if (!fl)
+		return (NULL);
 	ft_memset(fl, 0, 8);
 	ft_flags(format, fl);
 	ft_width(format, args, fl);
@@ -123,23 +126,3 @@ int		ft_printf(const char *format, ...)
 	va_end(args);
 	return (ret);
 }
-
-int main(int argc, char **argv)
-{
-	(void)argc;
-	(void)argv;
-	ft_printf("%% wesh");
-	return (0);
-}
-/*
-int	ft_valid_element(const char format)
-{
-	int			i;
-	static char	*tab[11] = {'c', 's', 'p', 'd', 'i', 'u', 'x', 'X', '-', '.', '*'};
-
-	i = -1;
-	while (++i < 11
-		if (format == tab[i] || ft_isdigit(format))
-			return (1);
-	return (0);
-}*/

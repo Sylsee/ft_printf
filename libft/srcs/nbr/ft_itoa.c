@@ -6,29 +6,11 @@
 /*   By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:23:56 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/04 16:23:42 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:56:47 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_nbrlen(long nb)
-{
-	int count;
-
-	count = 0;
-	if (nb < 0)
-	{
-		count++;
-		nb *= -1;
-	}
-	while (nb > 9)
-	{
-		nb /= 10;
-		count++;
-	}
-	return (++count);
-}
 
 char		*ft_itoa(int n)
 {

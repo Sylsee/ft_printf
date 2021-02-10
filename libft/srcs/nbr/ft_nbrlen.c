@@ -6,13 +6,13 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 16:00:21 by spoliart          #+#    #+#             */
-/*   Updated: 2021/01/30 15:00:51 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:57:11 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_nbrlen(int n)
+int	ft_nbrlen(long n)
 {
 	int count;
 	long nb;

@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 01:29:26 by spoliart          #+#    #+#             */
-/*   Updated: 2020/11/30 09:48:16 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:42:38 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,12 @@ typedef struct	s_arg
 	int		width;
 	int		space;
 }				t_arg;
+
+int	ft_printf(const char *format, ...);
+int	ft_print_d(long nb, int *fl);
+int	ft_print_c(char c, int *fl);
+int	ft_print_s(char *s, int *fl);
+int	ft_print_p(unsigned long n, int *fl);
+int	ft_print_x(unsigned int n, int *fl, int cap);
 
 #endif
