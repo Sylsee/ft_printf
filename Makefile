@@ -6,30 +6,58 @@
 #    By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 01:32:51 by spoliart          #+#    #+#              #
-#    Updated: 2021/02/10 17:03:33 by spoliart         ###   ########.fr        #
+#    Updated: 2021/02/12 16:06:02 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	ft_printf.c ft_aff.c
+INCLUDES=	./includes/
 
-LIB		=	libftprintf.a
+DIR_SRCS=	./srcs/
+
+DIR_OBJS=	./objs/
+
+SRCS	=	ft_flags.c		\
+			ft_utils.c		\
+			ft_print_d.c	\
+			ft_print_s.c	\
+			ft_print_p.c	\
+			ft_print_x.c	\
+			../ft_printf.c
+
+LIBFT 	=	./libft/
+
+NAME	=	libftprintf.a
 
 GCW		=	gcc -Wall -Wextra -Werror
 
-OBJS	=	$(SRCS:.c=.o)
+RM		=	rm -rf
+
+OBJS	=	$(SRCS:%.c=$(DIR_OBJS)%.o)
 
 all		:	$(NAME)
 
-NAME	:	$(OBJS)
-				make -C libft
-				cp libft/libft.a ./$(LIB)
+$(NAME)	:	$(OBJS)
+				@make -C $(LIBFT)
+				@cp $(LIBFT)libft.a $(NAME)
 				@ar rc $(NAME) $(OBJS)
+				@ranlib $(NAME)
+				@mv ft_printf.o $(DIR_OBJS)
+
+$(DIR_OBJS)%.o: $(DIR_SRCS)%.c
+				@mkdir -p $(DIR_OBJS)
+				@$(GCW) -I $(INCLUDES) -c $< -o $@
 
 %.o		:	%.c
 				@$(GCW) -c $< -o $@
 
+re		:	fclean all
+
 clean	:
-				rm $(OBJS)
+				@make clean -C $(LIBFT)
+				@$(RM) $(DIR_OBJS)
 
 fclean	:	clean
-				rm libftprintf.a
+				@make fclean -C $(LIBFT)
+				@$(RM) $(NAME)
+
+PHONY	:	all re clean fclean

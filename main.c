@@ -1,10 +1,10 @@
-#include "libprintf.h"
+#include "includes/libftprintf.h"
 
 int main()
 {
-	int xstr = -10;
-	ft_printf("-: %-*X\n", 20, xstr);
-	ft_printf("0: %0*x\n", 20, xstr);
+	char *xstr = "yo";
+	ft_printf("%-10s\n", xstr);
+/*	ft_printf("0: %0*x\n", 20, xstr);
 	ft_printf("*: %*x\n", 20, xstr);
 	ft_printf(".: %.*x\n", 1, xstr);
 	ft_printf("-.: %-*.20x\n", 20, xstr);
@@ -34,7 +34,7 @@ int main()
 	ft_printf("-.: %-*.2s\n", 20, str);
 	ft_printf("0.: %0*.2s\n", 20, str);
 	ft_printf("*.: %*.2s\n", 20, str);
-	return (0);
+*/	return (0);
 }
 
 
