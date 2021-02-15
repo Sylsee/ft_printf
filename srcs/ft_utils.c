@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:45:19 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/12 14:52:02 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/14 23:21:25 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ char	*ft_cut(char *s, int n)
 	char	*ret;
 
 	i = -1;
-	ret = (char *)malloc(sizeof(char) * i + 1);
+	if (!s)
+		return (ft_strdup("(null)"));
+	ret = (char *)malloc(sizeof(char) * n + 1);
 	if (!ret)
 		return (NULL);
 	while (s[++i] && n--)

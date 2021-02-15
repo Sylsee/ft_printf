@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:53:06 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/12 14:59:59 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/14 23:31:39 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	ft_print_p2(char *s, int *fl)
 		fl[1] = -fl[1];
 		ft_putxchar_fd(' ', 1, fl[1] - len - 2);
 	}
+	free(s);
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 11:08:49 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/12 16:29:31 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/14 23:31:13 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,28 @@
 
 static int		ft_print_choice(const char *format, va_list args, int *fl)
 {
+	int ret;
+
+	ret = 0;
 	if (format[fl[0]] == 'c')
-		return (ft_print_c((char)va_arg(args, int), fl));
-	if (format[fl[0]] == 's')
-		return (ft_print_s((char *)va_arg(args, char *), fl));
-	if (format[fl[0]] == 'p')
-		return (ft_print_p((unsigned long)va_arg(args, void *), fl));
-	if (format[fl[0]] == 'd' || format[fl[0]] == 'i')
-		return (ft_print_d((long)va_arg(args, int), fl));
-	if (format[fl[0]] == 'u')
-		return (ft_print_d((long)va_arg(args, unsigned int), fl));
-	if (format[fl[0]] == 'x')
-		return (ft_print_x((unsigned int)va_arg(args, int), fl, 0));
-	if (format[fl[0]] == 'X')
-		return (ft_print_x((unsigned int)va_arg(args, int), fl, 1));
-	return (0);
+		ret = ft_print_c((char)va_arg(args, int), fl);
+	else if (format[fl[0]] == 's')
+		ret = ft_print_s((char *)va_arg(args, char *), fl);
+	else if (format[fl[0]] == 'p')
+		ret = ft_print_p((unsigned long)va_arg(args, void *), fl);
+	else if (format[fl[0]] == 'd' || format[fl[0]] == 'i')
+		ret = ft_print_d((long)va_arg(args, int), fl);
+	else if (format[fl[0]] == 'u')
+		ret = ft_print_d((long)va_arg(args, unsigned int), fl);
+	else if (format[fl[0]] == 'x')
+		ret = ft_print_x((unsigned int)va_arg(args, int), fl, 0);
+	else if (format[fl[0]] == 'X')
+		ret = ft_print_x((unsigned int)va_arg(args, int), fl, 1);
+	free(fl);
+	return (ret);
 }
 
-static int		ft_init_printf(const char *format, va_list args)
+static int		ft_init_printf(const char *format, va_list args, int *i)
 {
 	int *fl;
 
@@ -54,9 +58,8 @@ static int		ft_init_printf(const char *format, va_list args)
 	ft_flags(format, fl);
 	ft_width(format, args, fl);
 	ft_prec(format, args, fl);
-	ret = ft_print_choice(format, args, fl);
-	while (ft_valid_elem(format[i]))
-	return (ret);
+	*i = *i + fl[0];
+	return (ft_print_choice(format, args, fl));
 }
 
 int				ft_printf(const char *format, ...)
@@ -77,7 +80,7 @@ int				ft_printf(const char *format, ...)
 			if (format[i + 1] && format[i + 1] == '%')
 				ret += write(1, &format[++i], 1);
 			else
-				ret += ft_init_printf(&format[i], args);
+				ret += ft_init_printf(&format[i], args, &i);
 		}
 		else
 			ret += write(1, &format[i], 1);

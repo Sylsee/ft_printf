@@ -6,13 +6,13 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:51:36 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/12 14:59:42 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/14 23:40:36 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_print_c(char c, int *fl)
+int			ft_print_c(char c, int *fl)
 {
 	int	ret;
 
@@ -36,7 +36,13 @@ int	ft_print_c(char c, int *fl)
 	return (ret);
 }
 
-int	ft_print_s(char *s, int *fl)
+static void	ft_freee(char *s, int *fl)
+{
+	if (fl[4] && fl[6] >= 0)
+		free(s);
+}
+
+int			ft_print_s(char *s, int *fl)
 {
 	int	ret;
 	int	len;
@@ -61,5 +67,6 @@ int	ft_print_s(char *s, int *fl)
 		fl[1] = -fl[1];
 		ft_putxchar_fd(' ', 1, fl[1] - len);
 	}
+	ft_freee(s, fl);
 	return (ret);
 }

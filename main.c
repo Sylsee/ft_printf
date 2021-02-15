@@ -2,15 +2,22 @@
 
 int main()
 {
-	char *xstr = "yo";
-	ft_printf("%-10s\n", xstr);
-/*	ft_printf("0: %0*x\n", 20, xstr);
-	ft_printf("*: %*x\n", 20, xstr);
-	ft_printf(".: %.*x\n", 1, xstr);
-	ft_printf("-.: %-*.20x\n", 20, xstr);
-	ft_printf("0.: %0*.20x\n", 20, xstr);
-	ft_printf("*.: %*.20x\n", 20, xstr);
-
+	char *xstr = "iduagvbiudayo";
+	ft_printf("%-10si\n", xstr);
+	printf("%-10si\n\n", xstr);
+	ft_printf("0: %0*s\n", 20, xstr);
+	printf("0: %0*s\n\n", 20, xstr);
+	ft_printf("*: %*s\n", 20, xstr);
+	printf("*: %*s\n\n", 20, xstr);
+	ft_printf(".: %.*si\n", -10, xstr);
+	printf(".: %.*si\n\n", -10, xstr);
+	ft_printf("-.: %-*.20s\n", 20, xstr);
+	printf("-.: %-*.20s\n\n", 20, xstr);
+	ft_printf("0.: %0*.20s\n", 20, xstr);
+	printf("0.: %0*.20s\n\n", 20, xstr);
+	ft_printf("*.: %*.20s\n", 20, xstr);
+	printf("*.: %*.20s\n\n", 20, xstr);
+/*
 	long str = 0;
 	ft_printf("-: %-*p\n", 20, &str);
 	ft_printf("0: %0*p\n", 20, &str);
