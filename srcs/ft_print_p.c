@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:53:06 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/14 23:31:39 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:29:01 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int			ft_print_p(unsigned long n, int *fl)
 		nb /= 16 + 0 * len++;
 	s = (char *)malloc(sizeof(s) * (len + 1));
 	if (!s)
-		return (0);
+		return (-1);
 	nb = n;
 	if (!len)
 		s[len++] = '0';

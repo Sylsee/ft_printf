@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:56:26 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/14 23:34:10 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:31:46 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			ft_print_x(unsigned int n, int *fl, int cap)
 		nb /= 16 + 0 * len++;
 	s = (char *)malloc(sizeof(s) * (len + 1));
 	if (!s)
-		return (0);
+		return (-1);
 	nb = n;
 	if (!len)
 		s[len++] = '0';
