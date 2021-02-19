@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:53:06 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/18 14:29:01 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/19 18:30:58 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,24 @@ static int	ft_print_p2(char *s, int *fl)
 
 	len = ft_strlen(s);
 	ret = len + 2;
-	if (fl[5])
+	if (fl[5] || (fl[3] && fl[4]))
 		ret += ft_putxchar_fd(' ', 1, fl[1] - len - 2);
 	ft_putstr_fd("0x", 1);
-	if (fl[3])
+	if (fl[3] && !fl[4])
 		ret += ft_putxchar_fd('0', 1, fl[1] - len - 2);
+	else if (fl[4])
+		ret += ft_putxchar_fd('0', 1, fl[6] - len);
 	ft_putstr_fd(s, 1);
 	if (fl[2])
 	{
 		if (fl[1] < 0)
 			fl[1] = -fl[1];
-		ft_putxchar_fd(' ', 1, fl[1] - len - 2);
+		ret += ft_putxchar_fd(' ', 1, fl[1] - len - 2);
 	}
 	else if ((fl[3] || fl[5]) && fl[1] < 0)
 	{
 		fl[1] = -fl[1];
-		ft_putxchar_fd(' ', 1, fl[1] - len - 2);
+		ret += ft_putxchar_fd(' ', 1, fl[1] - len - 2);
 	}
 	free(s);
 	return (ret);
@@ -54,7 +56,7 @@ int			ft_print_p(unsigned long n, int *fl)
 	if (!s)
 		return (-1);
 	nb = n;
-	if (!len)
+	if (!len && ((fl[4] && fl[6]) || !fl[4]))
 		s[len++] = '0';
 	s[len] = '\0';
 	while (len--)

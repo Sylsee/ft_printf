@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:48:46 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/14 23:31:57 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/19 19:28:24 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int			ft_print_d(long nb, int *fl)
 		nb = -nb + 0 * write(1, "-", 1);
 	if (fl[3] || fl[4])
 		ret += ft_putxchar_fd('0', 1, fl[6] - len);
-	ft_putnbr_fd((int)nb, 1);
+	if (!fl[4] || (fl[4] && !fl[6] && !nb))
+		ft_putnbr_fd((int)nb, 1);
 	if (fl[2])
 	{
 		if (fl[1] < 0)

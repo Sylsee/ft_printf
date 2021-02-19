@@ -3,8 +3,9 @@
 int main(void)
 {
 	char *xstr = "Wesh";
-	ft_printf("m-: %s\n", xstr);
-	printf("r-: %-10s\n", xstr);
+	ft_printf(": %.d\n", 1);
+	printf(": %.d\n", 1);
+//	printf("r-: %-10s\n", xstr);
 /*	fflush(stdout);
 	ft_printf("m0: %0*s\n", 20, xstr);
 	printf("r0: %0*s\n", 20, xstr);

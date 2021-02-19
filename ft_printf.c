@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 11:08:49 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/19 15:40:55 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/19 19:18:58 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,18 @@ static int		ft_init_printf(const char *format, va_list args, int *i)
 	int ret;
 	int *fl;
 
-	fl = (int *)malloc(sizeof(fl) * 7);
+	ret = -1;
+	fl = (int *)malloc(sizeof(fl) * 8);
 	if (!fl)
 		return (-1);
-	ft_memset(fl, 0, sizeof(fl) * 7);
+	ft_memset(fl, 0, sizeof(fl) * 8);
 	ft_flags(format, fl);
 	ft_width(format, args, fl);
 	ft_prec(format, args, fl);
-	ret = ft_print_choice(format, args, fl);
+	if (format[fl[0]])
+		ret = ft_print_choice(format, args, fl);
+	else
+		--fl[0];
 	*i = *i + fl[0];
 	free(fl);
 	return (ret);
