@@ -1,11 +1,11 @@
 #include "includes/libftprintf.h"
 
-int main()
+int main(void)
 {
 	char *xstr = "Wesh";
-	ft_printf("m-: %-10s\n", xstr);
+	ft_printf("m-: %s\n", xstr);
 	printf("r-: %-10s\n", xstr);
-	fflush(stdout);
+/*	fflush(stdout);
 	ft_printf("m0: %0*s\n", 20, xstr);
 	printf("r0: %0*s\n", 20, xstr);
 	fflush(stdout);
@@ -24,7 +24,7 @@ int main()
 	ft_printf("m*.: %*.20s\n", 20, xstr);
 	printf("r*.: %*.20s\n", 20, xstr);
 	fflush(stdout);
-/*
+
 	long str = 0;
 	ft_printf("-: %-*p\n", 20, &str);
 	ft_printf("0: %0*p\n", 20, &str);

@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 11:08:49 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/18 14:40:32 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/19 15:40:55 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,21 @@
 static int		ft_print_choice(const char *format, va_list args, int *fl)
 {
 	if (format[fl[0]] == 'c')
-		return(ft_print_c((char)va_arg(args, int), fl));
+		return (ft_print_c((char)va_arg(args, int), fl));
 	else if (format[fl[0]] == 's')
-		return(ft_print_s((char *)va_arg(args, char *), fl));
+		return (ft_print_s((char *)va_arg(args, char *), fl));
 	else if (format[fl[0]] == 'p')
-		return(ft_print_p((unsigned long)va_arg(args, void *), fl));
+		return (ft_print_p((unsigned long)va_arg(args, void *), fl));
 	else if (format[fl[0]] == 'd' || format[fl[0]] == 'i')
-		return(ft_print_d((long)va_arg(args, int), fl));
+		return (ft_print_d((long)va_arg(args, int), fl));
 	else if (format[fl[0]] == 'u')
-		return(ft_print_d((long)va_arg(args, unsigned int), fl));
+		return (ft_print_d((long)va_arg(args, unsigned int), fl));
 	else if (format[fl[0]] == 'x')
-		return(ft_print_x((unsigned int)va_arg(args, int), fl, 0));
+		return (ft_print_x((unsigned int)va_arg(args, int), fl, 0));
 	else if (format[fl[0]] == 'X')
-		return(ft_print_x((unsigned int)va_arg(args, int), fl, 1));
+		return (ft_print_x((unsigned int)va_arg(args, int), fl, 1));
 	else if (format[fl[0]] == '%')
-		return(ft_print_c('%', fl));
+		return (ft_print_c('%', fl));
 	return (0);
 }
 
@@ -50,10 +50,10 @@ static int		ft_init_printf(const char *format, va_list args, int *i)
 	int ret;
 	int *fl;
 
-	fl = (int *)malloc(sizeof(fl) * 8);
+	fl = (int *)malloc(sizeof(fl) * 7);
 	if (!fl)
 		return (-1);
-	ft_memset(fl, 0, 8);
+	ft_memset(fl, 0, sizeof(fl) * 7);
 	ft_flags(format, fl);
 	ft_width(format, args, fl);
 	ft_prec(format, args, fl);
