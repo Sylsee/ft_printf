@@ -6,19 +6,11 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:56:26 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/19 19:14:09 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/20 01:17:11 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-static void	ft_ternary(int *fl, int *ret, int len)
-{
-	if (fl[6] > len)
-		*ret += ft_putxchar_fd(' ', 1, fl[1] - fl[6]);
-	else
-		*ret += ft_putxchar_fd(' ', 1, fl[1] - len);
-}
 
 static int	ft_print_x3(int *fl, int ret, int len)
 {

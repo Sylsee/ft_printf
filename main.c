@@ -3,8 +3,15 @@
 int main(void)
 {
 	char *xstr = "Wesh";
-	ft_printf(": %.d\n", 1);
-	printf(": %.d\n", 1);
+//	ft_printf("%010.10d\n", -8473);
+//	printf("%010.10d\n", -8473);
+//	fflush(stdout);
+	ft_printf("%010.6d\n", -8473);
+	printf("%010.6d\n", -8473);
+	fflush(stdout);
+//	ft_printf("%05.10d\n", -8473);
+//	printf("%05.10d\n", -8473);
+//	printf(": %d\n", 1);
 //	printf("r-: %-10s\n", xstr);
 /*	fflush(stdout);
 	ft_printf("m0: %0*s\n", 20, xstr);
