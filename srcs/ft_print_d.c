@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:48:46 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/20 14:17:28 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/20 15:00:55 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ static int	ft_print_d2(int *fl, int ret, int len)
 		fl[1] = -fl[1];
 		ft_ternary(fl, &ret, len);
 	}
-	else if (fl[3] && fl[6] < 0)
-	{
-		fl[6] = -fl[6];
-		ft_ternary(fl, &ret, len);
-	}
 	return (ret);
 }
 
@@ -39,6 +34,8 @@ int			ft_print_d(long nb, int *fl)
 	int len;
 
 	len = ft_nbrlen(nb);
+	if (fl[6] < 0)
+		fl[4] = 0;
 	if (nb < 0)
 		fl[8] = 1;
 	if (fl[4] && !fl[6] && !nb && ++fl[7])

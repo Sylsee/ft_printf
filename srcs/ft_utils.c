@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:45:19 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/20 14:16:39 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/20 15:01:06 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_cut(char *s, int n)
 
 void	ft_ternary(int *fl, int *ret, int len)
 {
-	if (fl[6] > len)
+	if (fl[6] >= len)
 		*ret += ft_putxchar_fd(' ', 1, fl[1] - fl[6] - fl[8]);
 	else
 		*ret += ft_putxchar_fd(' ', 1, fl[1] - len);

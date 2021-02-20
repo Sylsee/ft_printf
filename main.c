@@ -6,8 +6,8 @@ int main(void)
 //	ft_printf("%010.10d\n", -8473);
 //	printf("%010.10d\n", -8473);
 //	fflush(stdout);
-	ft_printf("%X\n", 42);
-	printf("%X\n", 42);
+	ft_printf("\"%*.*x\"\n", -2, 0, 1);
+	printf("\"%*.*x\"\n", -2, 0, 1);
 	fflush(stdout);
 //	ft_printf("%05.10d\n", -8473);
 //	printf("%05.10d\n", -8473);
