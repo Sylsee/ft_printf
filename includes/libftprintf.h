@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 01:29:26 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/20 01:17:25 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/20 14:14:40 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			ft_flags(const char *format, int *fl);
 void			ft_width(const char *format, va_list args, int *fl);
 void			ft_prec(const char *format, va_list args, int *fl);
 
-void			ft_strup(char *s);
+char			*ft_strup(char *s);
 char			*ft_cut(char *s, int n);
 void			ft_ternary(int *fl, int *ret, int len);
 

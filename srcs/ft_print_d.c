@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:48:46 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/20 01:44:29 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/20 14:17:28 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_print_d2(int *fl, int ret, int len)
 			fl[1] = -fl[1];
 		ft_ternary(fl, &ret, len);
 	}
-	if (fl[3] && fl[4] && fl[1] < 0)
+	if ((fl[3] || fl[5]) && fl[1] < 0)
 	{
 		fl[1] = -fl[1];
 		ft_ternary(fl, &ret, len);
@@ -39,6 +39,8 @@ int			ft_print_d(long nb, int *fl)
 	int len;
 
 	len = ft_nbrlen(nb);
+	if (nb < 0)
+		fl[8] = 1;
 	if (fl[4] && !fl[6] && !nb && ++fl[7])
 		len = 0;
 	ret = len;
@@ -51,13 +53,6 @@ int			ft_print_d(long nb, int *fl)
 	else if (fl[4])
 		ret += ft_putxchar_fd('0', 1, fl[6] - len + fl[8]);
 	if (!fl[7])
-		ft_putnbr_fd((int)nb, 1);
+		ft_putnbr_fd((unsigned int)nb, 1);
 	return (ft_print_d2(fl, ret, len));
 }
-//	0 prends en compte '-'
-//	. prends pas en compte '-'
-
-
-
-
-

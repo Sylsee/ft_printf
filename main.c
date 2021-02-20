@@ -6,8 +6,8 @@ int main(void)
 //	ft_printf("%010.10d\n", -8473);
 //	printf("%010.10d\n", -8473);
 //	fflush(stdout);
-	ft_printf("%010.6d\n", -8473);
-	printf("%010.6d\n", -8473);
+	ft_printf("%X\n", 42);
+	printf("%X\n", 42);
 	fflush(stdout);
 //	ft_printf("%05.10d\n", -8473);
 //	printf("%05.10d\n", -8473);

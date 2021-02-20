@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:56:26 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/20 01:17:11 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/20 14:16:48 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_print_x2(char *s, int *fl, int cap)
 	len = ft_strlen(s);
 	ret = len;
 	if (cap == 1)
-		ft_strup(s);
+		s = ft_strup(s);
 	if (fl[5] || (fl[3] && fl[4]))
 		ft_ternary(fl, &ret, len);
 	if (fl[3] && !fl[4])

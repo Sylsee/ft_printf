@@ -6,19 +6,20 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:45:19 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/20 01:31:01 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/20 14:16:39 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_strup(char *s)
+char	*ft_strup(char *s)
 {
 	int i;
 
 	i = -1;
 	while (s[++i])
-		ft_toupper(s[i]);
+		s[i] = ft_toupper(s[i]);
+	return (s);
 }
 
 char	*ft_cut(char *s, int n)
@@ -41,5 +42,5 @@ void	ft_ternary(int *fl, int *ret, int len)
 	if (fl[6] > len)
 		*ret += ft_putxchar_fd(' ', 1, fl[1] - fl[6] - fl[8]);
 	else
-		*ret += ft_putxchar_fd(' ', 1, fl[1] - len - fl[8]);
+		*ret += ft_putxchar_fd(' ', 1, fl[1] - len);
 }

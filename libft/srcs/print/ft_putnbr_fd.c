@@ -6,13 +6,13 @@
 /*   By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:29:47 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/20 01:44:39 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/20 14:08:15 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(unsigned int n, int fd)
 {
 	long tmp;
 
