@@ -6,11 +6,27 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 13:53:06 by spoliart          #+#    #+#             */
-/*   Updated: 2021/02/19 18:30:58 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/02/22 19:02:25 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static int	ft_print_p3(int *fl, int ret, int len)
+{
+	if (fl[2])
+	{
+		if (fl[1] < 0)
+			fl[1] = -fl[1];
+		ret += ft_putxchar_fd(' ', 1, fl[1] - len - 2);
+	}
+	else if ((fl[3] || fl[5]) && fl[1] < 0)
+	{
+		fl[1] = -fl[1];
+		ret += ft_putxchar_fd(' ', 1, fl[1] - len - 2);
+	}
+	return (ret);
+}
 
 static int	ft_print_p2(char *s, int *fl)
 {
@@ -27,19 +43,8 @@ static int	ft_print_p2(char *s, int *fl)
 	else if (fl[4])
 		ret += ft_putxchar_fd('0', 1, fl[6] - len);
 	ft_putstr_fd(s, 1);
-	if (fl[2])
-	{
-		if (fl[1] < 0)
-			fl[1] = -fl[1];
-		ret += ft_putxchar_fd(' ', 1, fl[1] - len - 2);
-	}
-	else if ((fl[3] || fl[5]) && fl[1] < 0)
-	{
-		fl[1] = -fl[1];
-		ret += ft_putxchar_fd(' ', 1, fl[1] - len - 2);
-	}
 	free(s);
-	return (ret);
+	return (ft_print_p3(fl, ret, len));
 }
 
 int			ft_print_p(unsigned long n, int *fl)
