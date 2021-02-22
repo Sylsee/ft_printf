@@ -6,7 +6,7 @@
 #    By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 01:32:51 by spoliart          #+#    #+#              #
-#    Updated: 2021/02/12 16:06:02 by spoliart         ###   ########.fr        #
+#    Updated: 2021/02/22 18:56:09 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,30 +34,30 @@ RM		=	rm -rf
 
 OBJS	=	$(SRCS:%.c=$(DIR_OBJS)%.o)
 
-all		:	$(NAME)
+all:			$(NAME)
 
-$(NAME)	:	$(OBJS)
-				@make -C $(LIBFT)
-				@cp $(LIBFT)libft.a $(NAME)
-				@ar rc $(NAME) $(OBJS)
-				@ranlib $(NAME)
-				@mv ft_printf.o $(DIR_OBJS)
+$(NAME):		$(OBJS)
+						@make -C $(LIBFT)
+						@cp $(LIBFT)libft.a $(NAME)
+						@ar rc $(NAME) $(OBJS)
+						@ranlib $(NAME)
+						@mv ft_printf.o $(DIR_OBJS)
 
-$(DIR_OBJS)%.o: $(DIR_SRCS)%.c
-				@mkdir -p $(DIR_OBJS)
-				@$(GCW) -I $(INCLUDES) -c $< -o $@
+$(DIR_OBJS)%.o:	$(DIR_SRCS)%.c
+						@mkdir -p $(DIR_OBJS)
+						@$(GCW) -I $(INCLUDES) -c $< -o $@
 
-%.o		:	%.c
-				@$(GCW) -c $< -o $@
+%.o:			%.c
+						@$(GCW) -c $< -o $@
 
-re		:	fclean all
+re:				fclean all
 
-clean	:
-				@make clean -C $(LIBFT)
-				@$(RM) $(DIR_OBJS)
+clean:
+						@make clean -C $(LIBFT)
+						@$(RM) $(DIR_OBJS) ft_printf.o
 
-fclean	:	clean
-				@make fclean -C $(LIBFT)
-				@$(RM) $(NAME)
+fclean:			clean
+						@make fclean -C $(LIBFT)
+						@$(RM) $(NAME)
 
-PHONY	:	all re clean fclean
+.PHONY:			all re clean fclean
